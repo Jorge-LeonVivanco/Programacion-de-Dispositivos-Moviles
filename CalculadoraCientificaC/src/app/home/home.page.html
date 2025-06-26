@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="calculator-title">Calculadora Científica</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/historial']">Historial</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="calculator-container">
+    <div class="result-screen">
+      <input type="text" [(ngModel)]="displayValue" readonly placeholder="0" />
+    </div>
+
+    <div class="buttons">
+      <!-- Números y operadores básicos -->
+      <div class="row">
+        <button (click)="appendToDisplay('7')">7</button>
+        <button (click)="appendToDisplay('8')">8</button>
+        <button (click)="appendToDisplay('9')">9</button>
+        <button (click)="appendToDisplay('/')">/</button>
+      </div>
+      <div class="row">
+        <button (click)="appendToDisplay('4')">4</button>
+        <button (click)="appendToDisplay('5')">5</button>
+        <button (click)="appendToDisplay('6')">6</button>
+        <button (click)="appendToDisplay('*')">*</button>
+      </div>
+      <div class="row">
+        <button (click)="appendToDisplay('1')">1</button>
+        <button (click)="appendToDisplay('2')">2</button>
+        <button (click)="appendToDisplay('3')">3</button>
+        <button (click)="appendToDisplay('-')">-</button>
+      </div>
+      <div class="row">
+        <button (click)="appendToDisplay('0')">0</button>
+        <button (click)="appendToDisplay('.')">.</button>
+        <button (click)="appendToDisplay('+')">+</button>
+        <button (click)="calculate()">=</button>
+      </div>
+
+      <!-- Paréntesis y operadores especiales -->
+      <div class="row">
+        <button (click)="appendToDisplay('(')">(</button>
+        <button (click)="appendToDisplay(')')">)</button>
+        <button (click)="appendToDisplay('^')">^</button>
+        <button (click)="appendToDisplay('sqrt(')">√</button>
+        <button (click)="appendToDisplay('log(')">log</button>
+      </div>
+
+      <!-- Funciones trigonométricas -->
+      <div class="row">
+        <button (click)="appendToDisplay('sin(')">sin</button>
+        <button (click)="appendToDisplay('cos(')">cos</button>
+        <button (click)="appendToDisplay('tan(')">tan</button>
+      </div>
+      <div class="row">
+        <button (click)="appendToDisplay('asin(')">asin</button>
+        <button (click)="appendToDisplay('acos(')">acos</button>
+        <button (click)="appendToDisplay('atan(')">atan</button>
+      </div>
+
+      <!-- Botones de limpiar -->
+      <div class="row">
+        <button color="danger" (click)="clearDisplay()">C</button>
+        <button color="medium" (click)="clearLast()">←</button>
+      </div>
+    </div>
+  </div>
+</ion-content>
