@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="calculator-title">Calculadora</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/historial']">Historial</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="calculator-container">
+    <div class="result-screen">
+      <input type="text" [(ngModel)]="displayValue" readonly placeholder="0" />
+    </div>
+
+    <div class="buttons">
+      <div class="row">
+        <button ion-button expand="full" (click)="appendToDisplay('7')">7</button>
+        <button ion-button expand="full" (click)="appendToDisplay('8')">8</button>
+        <button ion-button expand="full" (click)="appendToDisplay('9')">9</button>
+        <button ion-button expand="full" (click)="appendToDisplay('/')">/</button>
+      </div>
+      <div class="row">
+        <button ion-button expand="full" (click)="appendToDisplay('4')">4</button>
+        <button ion-button expand="full" (click)="appendToDisplay('5')">5</button>
+        <button ion-button expand="full" (click)="appendToDisplay('6')">6</button>
+        <button ion-button expand="full" (click)="appendToDisplay('*')">*</button>
+      </div>
+      <div class="row">
+        <button ion-button expand="full" (click)="appendToDisplay('1')">1</button>
+        <button ion-button expand="full" (click)="appendToDisplay('2')">2</button>
+        <button ion-button expand="full" (click)="appendToDisplay('3')">3</button>
+        <button ion-button expand="full" (click)="appendToDisplay('-')">-</button>
+      </div>
+      <div class="row">
+        <button ion-button expand="full" (click)="appendToDisplay('0')">0</button>
+        <button ion-button expand="full" (click)="appendToDisplay('.')">.</button>
+        <button ion-button expand="full" (click)="appendToDisplay('+')">+</button>
+        <button ion-button expand="full" (click)="calculate()">=</button>
+      </div>
+
+      <div class="row">
+        <button ion-button color="danger" expand="full" (click)="clearDisplay()">C</button>
+        <button ion-button color="medium" expand="full" (click)="clearLast()">←</button>
+      </div>
+    </div>
+  </div>
+</ion-content>

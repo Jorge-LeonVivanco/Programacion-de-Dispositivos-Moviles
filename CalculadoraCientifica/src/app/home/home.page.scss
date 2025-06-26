@@ -1,0 +1,119 @@
+/* Estilos generales */
+.calculator-container {
+  padding: 20px;
+  background-color: #121212; /* Fondo oscuro */
+  border-radius: 15px; /* Bordes redondeados para la calculadora */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra suave */
+  width: 100%; /* Para que ocupe todo el ancho disponible */
+  max-width: 400px; /* Limita el ancho máximo en dispositivos grandes */
+  margin: 0 auto; /* Centrado en la pantalla */
+}
+
+/* Estilo para el título de la calculadora */
+.calculator-title {
+  font-size: 2rem;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave para darle profundidad */
+}
+
+.result-screen {
+  background-color: #333333; /* Fondo más neutro */
+  color: #ffffff; /* Texto blanco */
+  border-radius: 5px; /* Bordes ligeramente redondeados */
+  padding: 10px;
+  text-align: right;
+  font-size: 2rem; /* Tamaño de texto más pequeño */
+  margin-bottom: 15px;
+  font-family: 'Arial', sans-serif;
+  border: 1px solid #555555; /* Un borde más sutil */
+  width: 100%;
+  box-shadow: none; /* Sin sombra para un look más plano */
+}
+
+
+/* Estilo de los botones */
+button {
+  margin: 8px;
+  font-size: 1.3rem;
+  border-radius: 12px; /* Bordes redondeados */
+  padding: 15px;
+  background-color: #333; /* Botones de color oscuro */
+  color: white;
+  border: none;
+  transition: transform 0.1s ease-in-out, background-color 0.2s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Hace que los botones se expandan igualmente */
+}
+
+button:hover {
+  background-color: #444;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button[type="submit"] {
+  background-color: #007aff;
+  color: white;
+}
+
+ion-button {
+  --border-radius: 12px;
+  --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+ion-button[color="danger"] {
+  background-color: #f44336;
+}
+
+ion-button[color="medium"] {
+  background-color: #ffffff;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los botones se ajusten cuando no hay espacio */
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap: 10px; /* Añade un espacio entre las filas */
+}
+
+@media (max-width: 576px) {
+  .calculator-container {
+    padding: 15px;
+  }
+
+  .result-screen {
+    font-size: 2rem; /* Ajusta el tamaño de la pantalla de resultados */
+  }
+
+  ion-button {
+    font-size: 1.1rem;
+  }
+
+  button {
+    margin: 4px;
+    padding: 12px;
+    font-size: 1.1rem; /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 360px) {
+  .calculator-container {
+    padding: 10px;
+  }
+
+  .result-screen {
+    font-size: 1.8rem; /* Reducir tamaño en pantallas muy pequeñas */
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 10px; /* Ajusta el tamaño de los botones */
+  }
+}

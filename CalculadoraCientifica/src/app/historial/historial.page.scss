@@ -1,0 +1,64 @@
+ion-header {
+  --background: #007bff; /* Fondo de la barra de herramientas */
+}
+
+ion-toolbar {
+  --background: #007bff; /* Fondo de la toolbar */
+}
+
+ion-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+ion-button {
+  --background: transparent;
+  --color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+/* Estilo para la lista */
+ion-list {
+  padding: 0;
+  margin: 0;
+  border-radius: 12px;
+}
+
+/* Estilo para cada item */
+.historial-item {
+  --border-radius: 12px;
+  --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  padding: 15px 20px;
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #e0e0e0; /* Bordes suaves */
+}
+
+/* Efecto hover */
+.historial-item:hover {
+  --box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px); /* Eleva el item ligeramente */
+  background-color: #f1f1f1; /* Fondo suave en hover */
+}
+
+/* Estilo de la etiqueta */
+.historial-label {
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1.5;
+  font-size: 1.2rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Asegurar que los botones en el header no se salgan de la pantalla */
+ion-buttons {
+  margin-right: 10px;
+}
