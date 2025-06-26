@@ -1,0 +1,60 @@
+<app-header titulo="DateTime"></app-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+
+
+
+    <ion-list-header>
+      <ion-label>Datos de Nacimiento</ion-label>
+    </ion-list-header>
+    
+    <ion-item>
+      <ion-label>Fecha de Nacimiento</ion-label>
+        <ion-label>Date</ion-label>
+        <ion-datetime display-format="DD.MM.YYYY HH:mm"></ion-datetime>
+    </ion-item>
+
+    
+    <ion-list-header>
+      <ion-label>Reestricciones</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Minimo y Maximo</ion-label>
+        <ion-datetime display-format="DD.MM.YYYY HH:mm"
+                      min="2021-01-01"
+                      max="2030-01-01" >
+        </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Años</ion-label>
+        <ion-datetime display-format="YYYY"
+                      min="2025"
+                      max="2030" >
+        </ion-datetime>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>Parte 2</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Custom Option</ion-label>
+        <ion-datetime
+          display-format="DD.MM.YYYY HH:mm"
+          cancelText="Cancelar"
+          doneText="Aceptar"
+          [(ngModel)]="fechaNaci">
+        </ion-datetime>
+
+    </ion-item>
+
+
+  </ion-list>
+
+
+
+</ion-content>

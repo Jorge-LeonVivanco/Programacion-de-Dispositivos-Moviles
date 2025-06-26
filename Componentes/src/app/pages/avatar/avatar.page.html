@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Botón de regreso a la izquierda -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" color="primary"></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    <ion-title>Avatar</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-avatar>
+        <img src="assets/perfil.jpg" />
+      </ion-avatar>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Avatar</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-chip color="primary" mode="ios" outline="true">
+    <ion-label>Default</ion-label>
+  </ion-chip>
+
+  <ion-chip color="primary"  outline="true" *ngFor="let item of [1,1,1,1,1,1]">
+    <ion-avatar>
+      <img src="assets/perfil.jpg" />
+    </ion-avatar>
+              
+    <ion-label>Default</ion-label>
+  </ion-chip>
+
+
+</ion-content>
