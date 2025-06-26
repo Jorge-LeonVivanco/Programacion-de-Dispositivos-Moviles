@@ -1,0 +1,146 @@
+<ion-content [fullscreen]="true">
+
+  <!-- Mostramos el modal cuando el pokemon este listo -->
+  @if(pokemon){
+
+    <!-- Imagen del pokemon -->
+    <ion-img [src]="pokemon.sprite" />
+
+    <!-- Info basica -->
+    <ion-card>
+      <ion-card-header class="ion-text-capitalize">
+        <ion-card-title>{{pokemon.name}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        
+        <ion-grid>
+          <!-- Tipos -->
+          <ion-row class="ion-align-items-center">
+            <ion-col>
+              <ion-text>Tipo</ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-img class="ion-padding-start ion-padding-end" [src]="'assets/img/' + pokemon.type1 + '.gif'" />
+            </ion-col>
+            <ion-col>
+              @if(pokemon.type2){
+                <ion-img  class="ion-padding-start ion-padding-end" [src]="'assets/img/' + pokemon.type2 + '.gif'" />
+              }
+            </ion-col>
+          </ion-row>
+
+          <!-- Peso y altura -->
+          <ion-row>
+            <ion-col>
+              <ion-text>Peso</ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text>{{pokemon.weight}} kg</ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text>Altura</ion-text>
+            </ion-col>
+            <ion-col>
+              <ion-text>{{pokemon.height}} m</ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+      </ion-card-content>
+    </ion-card>
+    
+    <!-- Habilidades -->
+    <ion-card>
+      <ion-card-header class="ion-text-capitalize">
+        <ion-card-title>Habilidades</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        
+        <ion-grid>
+        
+          <!-- Habilidades principales -->
+          <ion-row>
+            <ion-col size="5">
+              <ion-text>Principales</ion-text>
+            </ion-col>
+            <ion-col size="7" class="ion-text-end">
+              @for(ability of pokemon.abilities; track ability){
+                <ion-text>
+                  <div>{{ability}}</div>
+                </ion-text>
+              }
+            </ion-col>
+          </ion-row>
+
+          <!-- Habilidad oculta (si existe) -->
+          @if(pokemon.hiddenAbility){
+            <ion-row>
+              <ion-col size="5">
+                <ion-text>Oculta</ion-text>
+              </ion-col>
+              <ion-col size="7" class="ion-text-end">
+                <ion-text>{{pokemon.hiddenAbility}}</ion-text>
+              </ion-col>
+            </ion-row>
+          }
+
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
+    
+    <!-- Estadisticas base -->
+    <ion-card>
+      <ion-card-header class="ion-text-capitalize">
+        <ion-card-title>Estadisticas base</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        
+        <ion-grid>
+
+          @for(pokemonStat of pokemonStats; track pokemonStat){
+
+            <!-- Obtengo el valor del stat -->
+            @let value = pokemon | getStat : pokemonStat.stat;
+            <!-- Valor en porcentaje (255 es el maximo) -->
+            @let progress = value / 255;
+            <!-- Depende del valor, el color cambiará -->
+            @let color = value >= 100 ? 'success' : value >= 50 ? 'warning' : 'danger';
+            
+            <!-- Estadisticas -->
+            <ion-row>
+              <ion-col size="4">
+                <ion-text>{{pokemonStat.name}}</ion-text>
+              </ion-col>
+              <ion-col size="2">
+                <ion-text>{{value}}</ion-text>
+              </ion-col>
+              <ion-col>
+                <ion-progress-bar 
+                  [value]="progress" 
+                  [color]="color" />
+              </ion-col>
+            </ion-row>
+
+          }
+          
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
+
+  }
+
+  <!-- Boton para volver -->
+  <ion-fab slot="fixed" vertical="top" horizontal="end">
+    <ion-fab-button (click)="goBack()">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>
