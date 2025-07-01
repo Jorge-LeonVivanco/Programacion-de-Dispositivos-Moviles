@@ -1,0 +1,136 @@
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+
+    <!-- Si no hay usuario -->
+    @if(!userSignal()){     
+      <ion-row>
+        <ion-col>
+          @if(showCreateAccount){
+            <app-create-account 
+              [showButtonBack]="true"
+              (back)="seeLogin()"
+              (doCreateAccount)="setAddressDefault()"
+            />
+          }@else{
+            <app-login
+              [showButtonBack]="true"
+              (newAccount)="newAccount()"
+              (back)="backHome()"
+              (doLogin)="setAddressDefault()"
+            />
+          }
+        </ion-col>
+      </ion-row>
+    } @else{
+
+      <!-- Paso 1: Productos -->
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{'label.order' | translate}}
+              </ion-card-title>
+            </ion-card-header>
+            @if(step == 1){
+              <ion-card-content>
+                <app-list-products [showButtonPay]="false" />
+                <ion-item lines="none">
+                  <ion-button slot="end" [disabled]="numProductsSignal() == 0" (click)="nextStep()">
+                    {{'label.next' | translate}}
+                  </ion-button>
+                </ion-item>
+              </ion-card-content>
+            }
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <!-- Paso 2: Dirección -->
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{'label.address' | translate}}
+              </ion-card-title>
+            </ion-card-header>
+            @if(step == 2){
+              <ion-card-content>
+
+                <ion-radio-group value="address-default" (ionChange)="changeOptionAddress($event)">
+                  <ion-item lines="none">
+                    <ion-radio value="address-default">
+                      {{'label.use.my.address' | translate}}
+                    </ion-radio>
+                  </ion-item>
+                  <ion-item lines="none">
+                    <ion-radio value="choose-address">
+                      {{'label.choose.address' | translate}}
+                    </ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+
+                @if(showNewAddress){
+                  <ion-item>
+                    <ion-input 
+                      [label]="'label.address' | translate" 
+                      [(ngModel)]="address">
+                    </ion-input>
+                  </ion-item>
+                }
+
+                <ion-item lines="none">
+                  <ion-button slot="start" (click)="previousStep()">
+                    {{'label.previous' | translate}}
+                  </ion-button>
+                  <ion-button slot="end" (click)="nextStep()">
+                    {{'label.next' | translate}}
+                  </ion-button>
+                </ion-item>
+
+              </ion-card-content>
+            }
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <!-- Paso 3: Pago -->
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{'label.payment.gateway' | translate}}
+              </ion-card-title>
+            </ion-card-header>
+
+            @if(step == 3){
+              <ion-card-content>
+
+                <!-- Botón Stripe -->
+                <ion-button color="tertiary" expand="block" (click)="payWithStripe()">
+                  {{'label.pay.stripe' | translate}}
+                </ion-button>
+
+                <!-- Botón PayPal -->
+                <div id="paypal-button-container" style="margin-top: 16px;"></div>
+
+                <ion-item lines="none">
+                  <ion-button slot="start" (click)="previousStep()">
+                    {{'label.previous' | translate}}
+                  </ion-button>
+                </ion-item>
+
+              </ion-card-content>
+            }
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+    }
+
+  </ion-grid>
+
+</ion-content>
